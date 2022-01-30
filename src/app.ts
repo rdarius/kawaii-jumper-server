@@ -4,6 +4,7 @@ import { Socket } from "socket.io";
 import { Player } from "./player";
 import { PlayerList } from "./playerList";
 import { MapTile } from "./mapTile";
+import * as config from './config.json';
 
 const app: express.Application = express();
 
@@ -278,6 +279,6 @@ io.on("connect", (socket: Socket) => {
 // 	});
 // });
 
-server.listen(3000, () => {
-  console.log("listening on *:3000");
+server.listen(config.port || 3000, () => {
+  console.log("listening on *:" + (config.port || 3000));
 });
