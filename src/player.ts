@@ -9,7 +9,7 @@ export class Player {
 
     private id: string = '';
     private position = new Position();
-    private name: string = 'Player#' + Math.floor(Math.random()*8000)+1000;
+    private name: string = 'Player#' + Math.floor(Math.random()*80000+10000);
     private movingVelocity = new Position();
     private color = 0;
     private direction = 0;
@@ -61,7 +61,10 @@ export class Player {
 
     setName(name: string) {
         // TODO: add checks for name length and banned words
-        this.name = name;
+        if (this.name.length > 16) {
+            this.name = this.name.substring(0, 16);
+          }
+        this.name = name || 'Player#' + Math.floor(Math.random() * 1000000);
     }
 
     setMovingVelocity(x: number, y: number) {

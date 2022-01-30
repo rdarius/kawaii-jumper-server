@@ -1,12 +1,9 @@
 import express from "express";
 import cors from "cors";
-import mongoose from "mongoose";
-import config from "./config";
 import { Socket } from "socket.io";
 import { Player } from "./player";
 import { PlayerList } from "./playerList";
 import { MapTile } from "./mapTile";
-import { Position } from "./position";
 
 const app: express.Application = express();
 
@@ -17,183 +14,183 @@ app.use(cors());
 const map: MapTile[] = [
   {
     color: 1,
-    x: 811.9583727530747,
-    y: 1772.8666035950805,
+    x: 811,
+    y: 1772,
     w: 130,
     h: 30,
   },
   {
     color: 1,
-    x: 619.4134342478714,
-    y: 1687.4929044465468,
+    x: 619,
+    y: 1687,
     w: 130,
     h: 30,
   },
   {
     color: 1,
-    x: 815.5912961210975,
-    y: 1534.9101229895932,
+    x: 815,
+    y: 1534,
     w: 130,
     h: 30,
   },
   {
     color: 1,
-    x: 486.8117313150426,
-    y: 1349.6310312204353,
+    x: 486,
+    y: 1349,
     w: 130,
     h: 30,
   },
   {
     color: 1,
-    x: 830.1229895931883,
-    y: 1184.333017975402,
+    x: 830,
+    y: 1184,
     w: 130,
     h: 30,
   },
   {
     color: 1,
-    x: 535.8561967833491,
-    y: 968.1740775780512,
+    x: 535,
+    y: 968,
     w: 130,
     h: 30,
   },
   {
     color: 1,
-    x: 125.33585619678335,
-    y: 846.4711447492905,
+    x: 125,
+    y: 846,
     w: 130,
     h: 30,
   },
   {
     color: 1,
-    x: 466.8306527909177,
-    y: 724.7682119205299,
+    x: 466,
+    y: 724,
     w: 130,
     h: 30,
   },
   {
     color: 1,
-    x: 659.3755912961211,
-    y: 561.2866603595081,
+    x: 659,
+    y: 561,
     w: 130,
     h: 30,
   },
   {
     color: 1,
-    x: 334.2289498580889,
-    y: 405.0709555345317,
+    x: 334,
+    y: 405,
     w: 130,
     h: 30,
   },
   {
     color: 1,
-    x: 116.25354777672659,
-    y: 199.81078524124882,
+    x: 116,
+    y: 199,
     w: 130,
     h: 30,
   },
   {
     color: 1,
-    x: 682.9895931882687,
-    y: 172.56385998107854,
+    x: 682,
+    y: 172,
     w: 130,
     h: 30,
   },
   {
     color: 1,
-    x: 114.43708609271523,
-    y: 574.0018921475876,
+    x: 114,
+    y: 574,
     w: 130,
     h: 30,
   },
   {
     color: 1,
-    x: 89.00662251655629,
-    y: 1440.4541154210028,
+    x: 89,
+    y: 1440,
     w: 130,
     h: 30,
   },
   {
     color: 0,
-    x: 292.45033112582786,
-    y: 1811.012298959319,
+    x: 292,
+    y: 1811,
     w: 130,
     h: 30,
   },
   {
     color: 0,
-    x: 461.38126773888365,
-    y: 1703.841059602649,
+    x: 461,
+    y: 1703,
     w: 130,
     h: 30,
   },
   {
     color: 0,
-    x: 982.705771050142,
-    y: 1638.4484389782403,
+    x: 982,
+    y: 1638,
     w: 130,
     h: 30,
   },
   {
     color: 0,
-    x: 568.5525070955534,
-    y: 1462.2516556291391,
+    x: 568,
+    y: 1462,
     w: 130,
     h: 30,
   },
   {
     color: 0,
-    x: 339.678334910123,
-    y: 1128.0227057710501,
+    x: 339,
+    y: 1128,
     w: 130,
     h: 30,
   },
   {
     color: 0,
-    x: 822.8571428571429,
-    y: 851.9205298013245,
+    x: 822,
+    y: 851,
     w: 130,
     h: 30,
   },
   {
     color: 0,
-    x: 366.9252601702933,
-    y: 583.0842005676443,
+    x: 366,
+    y: 583,
     w: 130,
     h: 30,
   },
   {
     color: 0,
-    x: 862.8192999053927,
-    y: 425.0520340586566,
+    x: 862,
+    y: 425,
     w: 130,
     h: 30,
   },
   {
     color: 0,
-    x: 406.8874172185431,
-    y: 201.62724692526018,
+    x: 406,
+    y: 201,
     w: 130,
     h: 30,
   },
   {
     color: 0,
-    x: 946.3765373699149,
-    y: 1382.3273415326396,
+    x: 946,
+    y: 1382,
     w: 130,
     h: 30,
   },
   {
     color: 0,
-    x: 39.962157048249765,
-    y: 980.8893093661306,
+    x: 39,
+    y: 980,
     w: 130,
     h: 30,
   },
   {
     color: 0,
-    x: 419.6026490066225,
-    y: 336.0454115421003,
+    x: 419,
+    y: 336,
     w: 130,
     h: 30,
   },
@@ -230,7 +227,7 @@ const io = new Server(server, {
 });
 
 io.on("connect", (socket: Socket) => {
-  console.log("connect", socket.id);
+  //   console.log("connect", socket.id);
   io.emit("msg", { some: "data" });
   players[socket.id] = new Player(socket.id);
   socket.emit("takeYourIdAndLeaveMeAlone", socket.id);
@@ -239,25 +236,30 @@ io.on("connect", (socket: Socket) => {
   socket.broadcast.emit("newPlayer", players[socket.id]);
 
   socket.on("disconnect", () => {
-    console.log("disconnect", socket.id);
+    // console.log("disconnect", socket.id);
     io.emit("playerDisconnected", socket.id);
     delete players[socket.id];
   });
 
   socket.on("updatedPosition", (position) => {
-    console.log("updatePosition", socket.id, position);
+    // console.log("updatePosition", socket.id, position);
     players[socket.id].setPosition(position.x, position.y);
     socket.broadcast.emit("updatedPlayerPositions", { [socket.id]: position });
   });
 
   socket.on("updatedColor", (color) => {
-    console.log("updatedColor", socket.id, color);
+    // console.log("updatedColor", socket.id, color);
     players[socket.id].setColor(color);
     socket.broadcast.emit("updatedPlayerColor", { [socket.id]: color });
   });
 
+  socket.on("setMyUsername", (username: string) => {
+    players[socket.id].setName(username);
+    socket.broadcast.emit("nameChanged", { [socket.id]: username });
+  });
+
   socket.on("updatedDirection", (direction) => {
-    console.log("updatedDirection", socket.id, direction);
+    // console.log("updatedDirection", socket.id, direction);
     players[socket.id].setDirection(direction);
     socket.broadcast.emit("updatedPlayerDirection", { [socket.id]: direction });
   });
