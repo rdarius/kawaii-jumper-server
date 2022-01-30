@@ -45,7 +45,7 @@ const io = new Server(server, {
 });
 
 io.on("connect", (socket: Socket) => {
-  //   console.log("connect", socket.id);
+  console.log("connect", socket.id);
   io.emit("msg", { some: "data" });
   players[socket.id] = new Player(socket.id);
   socket.emit("takeYourIdAndLeaveMeAlone", socket.id);
@@ -54,7 +54,7 @@ io.on("connect", (socket: Socket) => {
   socket.broadcast.emit("newPlayer", players[socket.id]);
 
   socket.on("disconnect", () => {
-    // console.log("disconnect", socket.id);
+    console.log("disconnect", socket.id);
     io.emit("playerDisconnected", socket.id);
     delete players[socket.id];
   });
